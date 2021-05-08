@@ -10,8 +10,8 @@ section .text
 
 ; Suma de los dígitos
 iterar:
-        MOV word BX, [carnet+DI]
-        ADD AX, BX
+        MOV byte BL, [carnet+DI]
+        ADD AL, BL
         INC DI
         LOOP iterar
 promedio:
@@ -19,10 +19,10 @@ promedio:
         MOV BX, 8d
         DIV BX
         ; Guardando el resultado en el registro 20Ah
-        MOV [20Ah], AL         
+        MOV byte [20Ah], AL         
 exit:
         int 20h
 
 section .data
 
-carnet DB 00041517
+carnet DB 0,0,0,4,1,5,1,7
